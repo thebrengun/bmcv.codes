@@ -33,15 +33,6 @@ module.exports = {
         plugins: [],      // Plugins configs
       },
     },
-    {
-      resolve: 'gatsby-plugin-web-font-loader',
-      options: {
-        custom: {
-          families: ['Texta-Regular', 'Texta-Thin'],
-          urls: ['src/css/fonts.css']
-        }
-      }
-    },
     `gatsby-transformer-sharp`, 
     `gatsby-plugin-sharp`, 
     {

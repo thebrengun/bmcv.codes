@@ -1,3 +1,4 @@
+import '../../css/fonts.css';
 import './Layout.css';
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
