@@ -20,8 +20,7 @@ const offsiteLink = css`&::after {content: ' \\02197';}`;
 
 const ProjectTemplate = ({ data }) => {
 	const project = data.markdownRemark;
-	const { title, client, summary, shortSummary, demo, repository, thumbnail, highlights, technologies } = project.frontmatter;
-	const { fluid:fluidThumbnail } = thumbnail.childImageSharp;
+	const { title, client, summary, shortSummary, demo, repository, thumbnail, highlights, technologies, thumbnails } = project.frontmatter;
 	return (
 		<Layout>
 			<div 
@@ -70,15 +69,36 @@ const ProjectTemplate = ({ data }) => {
 							`}>
 								{technologies.join(', ')}
 							</p>
-							<Img 
-								fluid={fluidThumbnail} 
-								css={
-									theme => css`
-										border-radius: ${theme.measurements.borderRadius};
-										border: solid 1px #cccccc;
-									`
-								} 
-							/>
+							<div css={css`
+								display: grid;
+								grid-template-columns: repeat(2, 1fr);
+								grid-column-gap: .5em;
+								grid-row-gap: .5em;	
+
+								@media(min-width: 768px) {
+									grid-template-columns: repeat(${thumbnails.length}, 1fr);
+									grid-column-gap: 1em;
+									grid-row-gap: 1em;	
+								}
+							`}>
+								{thumbnails.map(({ childImageSharp }, i) => 
+									<Img 
+										fluid={childImageSharp.fluid} 
+										css={
+											theme => css`
+												border-radius: ${theme.measurements.borderRadius};
+												border: solid 1px #cccccc;
+
+												@media(max-width: 767px) {
+													&:first-of-type {
+														grid-column: 1/${thumbnails.length + 1};
+													}
+												}
+											`
+										} 
+									/>
+								)}
+							</div>
 							<p>{summary || shortSummary}</p>
 							<div 
 								css={css`
@@ -136,7 +156,7 @@ export const query = graphql`
 				shortSummary
 				repository
 				demo
-				thumbnail {
+				thumbnails {
 					childImageSharp {
 						fluid(maxWidth: 375) {
 							src

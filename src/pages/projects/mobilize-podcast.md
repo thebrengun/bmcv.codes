@@ -6,7 +6,10 @@ shortSummary: 'A responsive, progressively enhanced, static webapp, built with G
 summary: ''
 repository: 'https://github.com/mobilizehere/mobilizehere.com'
 demo: 'https://mobilizehere.com'
-thumbnail: '../../images/projects/mobilize-podcast/mobilize-thumbnail.png'
+thumbnails: [
+    '../../images/projects/mobilize-podcast/mobilize-thumbnail.png',
+    '../../images/projects/mobilize-podcast/mobilize-thumbnail.png'
+]
 highlights: 
     - {
         description: 'Implemented design from wireframe provided by designer',
@@ -26,5 +29,5 @@ highlights:
     }
 technologies: ['React', 'Redux', 'webpack', 'Sass', 
 'Gatsby', 'Netlify', 'Netlify CMS', 'Github']
-featured: false
+featured: true
 ---

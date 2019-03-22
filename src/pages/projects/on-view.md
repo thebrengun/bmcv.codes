@@ -4,7 +4,10 @@ title: 'On View'
 client: 'MoMA Volunteer Program'
 shortSummary: 'An internal web app used by volunteers at the Museum of Modern Art in New York to assist guests.'
 summary: ''
-thumbnail: '../../images/projects/on-view/on-view-thumbnail.png'
+thumbnails: [
+    '../../images/projects/on-view/on-view-thumbnail.png',
+    '../../images/projects/on-view/on-view-thumbnail-search.png'
+]
 highlights: 
     - {
         description: 'Designed and developed internal web app used by volunteers every day to assist visitors throughout the museum',
@@ -23,5 +26,5 @@ highlights:
         photos: ['']
     }
 technologies: ['CSS', 'Google Apps Script', 'React', 'Redux', 'webpack']
-featured: false
+featured: true
 ---

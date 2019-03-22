@@ -2,6 +2,7 @@ import React from 'react';
 import { graphql, Link, StaticQuery } from 'gatsby';
 import Img from 'gatsby-image';
 import Layout from '../components/Layout/Layout.js';
+import ProjectWrapper from '../components/ProjectWrapper.js';
 import Project from '../components/Project.js';
 import { css } from '@emotion/core';
 
@@ -30,19 +31,21 @@ const ProjectsPage = (data) => {
 					({node}, i) => {
 						const { fields, frontmatter } = node;
 						const { slug } = fields;
-						const { title, client, shortSummary, featured } = frontmatter;
-						const thumbnail = frontmatter.thumbnail.childImageSharp.fluid;
+						const { title, client, shortSummary } = frontmatter;
+						const featured = i === 0 ? frontmatter.featured : false;
+						const thumbnail = frontmatter.thumbnails[0].childImageSharp.fluid;
 
 						return (
-							<Project 
-								featured={featured}
-								slug={slug}
-								title={title}
-								client={client}
-								thumbnail={thumbnail}
-								shortSummary={shortSummary} 
-								key={`${slug}-${i}`}
-							/>
+							<ProjectWrapper featured={featured} key={`${slug}-${i}`}>
+								<Project 
+									featured={featured}
+									slug={slug}
+									title={title}
+									client={client}
+									thumbnail={thumbnail}
+									shortSummary={shortSummary} 
+								/>
+							</ProjectWrapper>
 						);
 					}
 				)}
@@ -65,9 +68,9 @@ const projectsQuery = graphql`
 						client
 						shortSummary
 						featured
-						thumbnail {
+						thumbnails {
 							childImageSharp {
-								fluid(maxWidth: 375) {
+								fluid(maxWidth: 800) {
 									src
 									srcSet
 									aspectRatio

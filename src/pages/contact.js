@@ -106,7 +106,7 @@ const ContactPage = () => {
 					<form>
 						<FieldGroup 
 							el={Input} 
-							attrs={{type: 'name', required: 'required', autoFocus: 'autofocus'}} 
+							attrs={{type: 'name', required: 'required'}} 
 							labelText="Name" 
 							helpText="Your name is required"
 							id='input-name'

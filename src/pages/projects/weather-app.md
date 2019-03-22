@@ -6,7 +6,11 @@ shortSummary: 'A responsive, progressively enhanced webapp built with React and 
 summary: ''
 repository: 'https://github.com/thebrengun/fcc-weather-app/'
 demo: 'https://thebrengun.github.io/fcc-weather-app/'
-thumbnail: '../../images/projects/weather-app/weather-app-thumbnail.png'
+thumbnails: [
+    '../../images/projects/weather-app/weather-app-thumbnail.png',
+    '../../images/projects/weather-app/weather-app-thumbnail-galapagos.png',
+    '../../images/projects/weather-app/weather-app-night-detail.png'
+]
 highlights: 
     - {
         description: 'Designed and developed single page application with a perfect Lighthouse score',

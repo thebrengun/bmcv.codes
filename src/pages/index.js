@@ -10,10 +10,7 @@ import { ctaLink, lowKeyLink } from '../styles/index.js';
 const IndexPage = (data) => {
 	const { name, role, description } = data.site.siteMetadata;
 	const { excerpt } = data.about.childMarkdownRemark;
-	const featuredProject = data.featuredProject.childMarkdownRemark;
-	const { title, client, shortSummary } = featuredProject.frontmatter;
-	const thumbnail = featuredProject.frontmatter.thumbnail.childImageSharp.fluid;
-	const { slug:featuredProjectSlug } = featuredProject.fields;
+	const { edges:featuredProjects } = data.featuredProjects;
 
 	return (
 		<Layout>
@@ -84,61 +81,85 @@ const IndexPage = (data) => {
 				css={theme => css`
 					background: ${theme.colors.primary};
 					color: #ffffff;
+					padding: 1em;
+
+					@media(min-width: 768px) {
+						padding: 2em 6em;
+					}
+
+					@media(min-width: 1200px) {
+						padding: 2em 0;
+					}
 				`}
 			>
-				<div 
-					css={css`
-						padding: 1em;
-						display: flex;
-						flex-direction: column;
-
-						@media(min-width: 768px) {
-							padding: 2em 6em;
-						}
-
-						@media(min-width: 1200px) {
-							padding: 2em 0;
-							max-width: 700px;
-							margin: 0 auto;
-						}
-					`}
-				>
-					<Link 
-						to={featuredProjectSlug} 
-						css={[lowKeyLink, css`
-							@media(min-width: 1200px) {
-								max-width: 700px;
+				<div css={css`
+					@media(min-width: 1200px) {
+						max-width: 700px;
+						margin: 2em auto;
+					}
+				`}>
+					<h2 
+						css={css`
+							@media(min-width: 768px) {
+								&::after {
+									content: 's';
+								}
 							}
-						`]}
+						`}
 					>
-						<h3>Featured Project</h3>
-						<h4>
-							{title}
-							{client && <span css={css`display: block; text-transform: capitalize;`}>{client}</span>}
-						</h4>
-						<Img 
-							fluid={thumbnail} 
-							css={
-								theme => css`
-									border-radius: ${theme.measurements.borderRadius};
-									border: solid 1px #333333;
-								`
-							} 
-						/>
-						<p>{shortSummary}</p>
-					</Link>
-					<Link 
-						to={featuredProjectSlug} 
-						css={[
-							ctaLink,
-							css`
-								color: #ffffff;
-								align-self: flex-end;
-							`
-						]}
-					>
-						Explore Project
-					</Link>
+						Featured Project
+					</h2>
+					<div css={css`
+						@media(min-width: 768px) {
+							display: grid;
+							grid-template-columns: 1fr 1fr 1fr;
+							grid-column-gap: 1em;
+							grid-row-gap: 1em;
+						}
+					`}>
+						{featuredProjects.map(
+							({node}, i) => {
+								const { fields, frontmatter } = node;
+								const { slug } = fields;
+								const { title, client, shortSummary, featured } = frontmatter;
+								const thumbnail = frontmatter.thumbnails ? frontmatter.thumbnails[0].childImageSharp.fluid : null;
+
+								return (
+									<div 
+										css={(theme) => css`
+											color: #ffffff;
+											display: none;
+											flex-direction: column;
+											justify-content: flex-start;
+
+											&:first-of-type {
+												display: flex;
+											}
+
+											@media(min-width: 768px) {
+												padding: 0;
+												border-radius: ${theme.measurements.borderRadius};
+												border: solid 1px transparent;
+												display: grid;
+												grid-template-rows: 2.5em min-content auto 1em;
+											}
+										`} 
+										key={`featured-project-${slug}`}
+									>
+										<Project 
+											featured={featured}
+											slug={slug}
+											title={title}
+											client={client}
+											thumbnail={thumbnail}
+											shortSummary={shortSummary} 
+											key={`${slug}-${i}`} 
+										/>
+									</div>
+								);
+							}
+						)}
+					</div>
 				</div>
 			</div>
 			<div 
@@ -191,24 +212,35 @@ const indexQuery = graphql`
 				excerpt
 			}
 		}
-		featuredProject: file(relativePath: {eq: "projects/weather-app.md"}) {
-			childMarkdownRemark {
-				fields {
-					slug
+		featuredProjects: allMarkdownRemark(
+			filter: {
+				frontmatter: {
+					template: {eq: "project"}
+					featured: {eq: true}
 				}
-				frontmatter {
-					title
-					client
-					shortSummary
-					thumbnail {
-						childImageSharp {
-							fluid(maxWidth: 375) {
-								src
-								srcSet
-								aspectRatio
-								sizes
-							}
-						}
+			}
+			limit: 3
+		) {
+			edges {
+				node {
+					fields {
+						slug
+					}
+					frontmatter {
+						featured
+						title
+						client
+						shortSummary
+						thumbnails {
+	            childImageSharp {
+	              fluid(maxWidth: 800) {
+	                src
+	                srcSet
+	                aspectRatio
+	                sizes
+	              }
+	            }
+	          }
 					}
 				}
 			}
