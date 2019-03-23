@@ -115,13 +115,13 @@ const ContactPage = () => {
 		if(failedSubmit) {
 			setFailedSubmit(false);
 		}
-		
+
 		fetch('/', {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
 			body: encode({
 				'form-name': form.getAttribute('name'),
-				honey, name, email, message
+				'bot-field': honey, name, email, message
 			})
 		}).then(
 			() => navigate(form.getAttribute("action"))
@@ -174,7 +174,7 @@ const ContactPage = () => {
 						/>
 						<FieldGroup 
 							el={Input} 
-							attrs={{type: 'name', required: 'required', disabled: submitted}} 
+							attrs={{name: 'name', type: 'name', required: 'required', disabled: submitted}} 
 							labelText="Name" 
 							helpText="Your name is required"
 							id='input-name'
@@ -183,7 +183,7 @@ const ContactPage = () => {
 						/>
 						<FieldGroup 
 							el={Input} 
-							attrs={{type: 'email', required: 'required', disabled: submitted}} 
+							attrs={{name: 'email', type: 'email', required: 'required', disabled: submitted}} 
 							labelText={'Email'} 
 							helpText="This is not a valid email address"
 							id='input-email'
@@ -192,7 +192,7 @@ const ContactPage = () => {
 						/>
 						<FieldGroup 
 							el={ContactTextArea} 
-							attrs={{required: 'required', disabled: submitted}} 
+							attrs={{name: 'message', required: 'required', disabled: submitted}} 
 							labelText={'Message'} 
 							helpText="A message is required"
 							id='textarea-message'
