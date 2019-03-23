@@ -1,10 +1,15 @@
 import React from 'react';
 import { css } from '@emotion/core';
 import Layout from '../components/Layout/Layout.js';
+import Helmet from 'react-helmet';
 
 const thanks = () => {
 	return (
 		<Layout>
+			<Helmet title="Thanks">
+				<meta name="robots" content="noindex" />
+				<meta name="googlebot" content="noindex" />
+			</Helmet>
 			<div css={theme => css`
 					font-family: 'Texta-Thin';
 					font-size: 1.5em;

@@ -6,6 +6,7 @@ import Layout from '../components/Layout/Layout.js';
 import Logo from '../components/Logo.js';
 import Project from '../components/Project.js';
 import { ctaLink, lowKeyLink } from '../styles/index.js';
+import SEO from '../components/seo.js';
 
 const IndexPage = (data) => {
 	const { name, role, description } = data.site.siteMetadata;

@@ -4,6 +4,7 @@ import Img from 'gatsby-image';
 import { css } from '@emotion/core';
 import Layout from '../components/Layout/Layout.js';
 import { ctaLink } from '../styles/index.js';
+import SEO from '../components/seo.js';
 
 const ctaBtn = css`
 	background: #2B2D2D;
@@ -23,6 +24,10 @@ const ProjectTemplate = ({ data }) => {
 	const { title, client, summary, shortSummary, demo, repository, thumbnail, highlights, technologies, thumbnails } = project.frontmatter;
 	return (
 		<Layout>
+			<SEO 
+				title={`Project: ${title}${client && ` - ${client}`}`} 
+				description={summary || shortSummary}
+			/>
 			<div 
 				css={
 					(theme) => css`

@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `Brennan McVicar Front End Developer`,
+    title: `Brennan McVicar`,
     name: `Brennan McVicar`,
     role: `Front End Developer`,
     description: `I am a front end developer with strong JavaScript and CSS skills and experience collaborating across disciplines while managing competing concerns to create the best possible product.`,

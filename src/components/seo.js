@@ -16,6 +16,7 @@ function SEO({ description, lang, meta, keywords, title }) {
               lang,
             }}
             title={title}
+            defaultTitle={data.site.siteMetadata.title} 
             titleTemplate={`%s | ${data.site.siteMetadata.title}`}
             meta={[
               {
@@ -78,7 +79,7 @@ SEO.propTypes = {
   lang: PropTypes.string,
   meta: PropTypes.array,
   keywords: PropTypes.arrayOf(PropTypes.string),
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
 }
 
 export default SEO
