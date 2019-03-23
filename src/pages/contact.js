@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Layout from '../components/Layout/Layout.js';
 import styled from '@emotion/styled';
 import { jsx, css } from '@emotion/core';
+import { navigate } from 'gatsby-link';
 
 const validation = css`
 	&:valid {
@@ -44,7 +45,7 @@ const Input = styled.input`
 	border-color: #dddddd;
 	border-width: .125em;
 	font-size: 1em;
-	padding: .25em .5em;
+	padding: .5em .5em;
 	font-family: inherit;
 `;
 
@@ -52,22 +53,35 @@ const TextArea = Input.withComponent('textarea');
 const ContactTextArea = styled(TextArea)`height: 25vh;`;
 
 const FieldGroup = (props) => {
-	const { el, attrs, id, labelText, helpText } = props;
+	const { el, attrs, id, labelText, helpText, value, setValue, hidden = false } = props;
+
 	const [ valid, setValid ] = useState(false);
 	const [ blurred, setBlurred ] = useState(false);
 
-	const handleChange = (event) => setValid(event.target.validity.valid);
-	const handleBlur = (event) => setBlurred(true);
+	const handleChange = (event) => {
+		setValue(event.target.value);
+		if(attrs.required) {
+			setValid(event.target.validity.valid);
+		}
+	};
+	const handleBlur = (event) => {
+		if(attrs.required) {
+			setBlurred(true);
+		}
+	};
+
+	const elCss = attrs.required ? [validation, blurred ? blurredValidation : css``] : [];
 
 	return (
-		<FormRow>
+		<FormRow css={css`${hidden ? `display: none;` : ``}`}>
 			<Label htmlFor={id}>{labelText}</Label>
 			{jsx(
 				el, 
 				{
 					...attrs, 
+					value,
 					id,
-					css: [validation, blurred ? blurredValidation : css``],
+					css: elCss,
 					onBlur: handleBlur,
 					onChange: handleChange
 				}
@@ -81,7 +95,44 @@ const FieldGroup = (props) => {
 	);
 };
 
+const encode = (data) => Object.keys(data).map(
+	key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key])
+).join('&');
+
 const ContactPage = () => {
+
+	const [ honey, setHoney ] = useState('');
+	const [ name, setName ] = useState('');
+	const [ email, setEmail ] = useState('');
+	const [ message, setMessage ] = useState('');
+	const [ submitted, setSubmitted ] = useState(false);
+	const [ failedSubmit, setFailedSubmit ] = useState(false);
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		const form = e.target;
+		setSubmitted(true);
+		if(failedSubmit) {
+			setFailedSubmit(false);
+		}
+		
+		fetch('/', {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+			body: encode({
+				'form-name': form.getAttribute('name'),
+				honey, name, email, message
+			})
+		}).then(
+			() => navigate(form.getAttribute("action"))
+		).catch(
+			(error) => {
+				setFailedSubmit(true);
+				setSubmitted(false);
+			}
+		);
+	};
+
 	return (
 		<Layout>
 			<div
@@ -103,31 +154,55 @@ const ContactPage = () => {
 						}
 					`}
 				>
-					<form>
+					<form 
+						name="contact"
+						method="post"
+						action="/thanks/"
+						data-netlify="true"
+						data-netlify-honeypot="bot-field"
+						onSubmit={handleSubmit}
+					>
+						<input type="hidden" name="form-name" value="contact" />
+						<FieldGroup 
+							hidden={true} 
+							el={Input} 
+							attrs={{name: 'bot-field'}} 
+							labelText="Leave this field blank" 
+							id='input-honey'
+							value={honey}
+							setValue={setHoney}
+						/>
 						<FieldGroup 
 							el={Input} 
-							attrs={{type: 'name', required: 'required'}} 
+							attrs={{type: 'name', required: 'required', disabled: submitted}} 
 							labelText="Name" 
 							helpText="Your name is required"
 							id='input-name'
+							value={name}
+							setValue={setName}
 						/>
 						<FieldGroup 
 							el={Input} 
-							attrs={{type: 'email', required: 'required'}} 
+							attrs={{type: 'email', required: 'required', disabled: submitted}} 
 							labelText={'Email'} 
 							helpText="This is not a valid email address"
 							id='input-email'
+							value={email}
+							setValue={setEmail}
 						/>
 						<FieldGroup 
 							el={ContactTextArea} 
-							attrs={{required: 'required'}} 
+							attrs={{required: 'required', disabled: submitted}} 
 							labelText={'Message'} 
 							helpText="A message is required"
 							id='textarea-message'
+							value={message}
+							setValue={setMessage}
 						/>
 						<FormRow>
 							<Input 
 								type="submit" 
+								disabled={submitted} 
 								css={css`
 									background: #2B2D2D;
 									border-color: #2B2D2D;
@@ -135,8 +210,18 @@ const ContactPage = () => {
 									font-size: 1em;
 									font-family: inherit;
 									text-transform: uppercase;
+
+									&:disabled {
+										opacity: .5;
+									}
 								`} 
 							/>
+							{failedSubmit && 
+								<div css={css`color: red; margin-top: 1em;`}>
+									<span css={css`display: block;`}>Your message was not submitted!</span>
+									<span css={css`display: block;`}>Try submitting again.</span>
+								</div>
+							}
 						</FormRow>
 					</form>
 				</div>
