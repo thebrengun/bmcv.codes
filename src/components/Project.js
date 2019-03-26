@@ -2,7 +2,8 @@ import React from 'react';
 import { graphql, Link, StaticQuery } from 'gatsby';
 import Img from 'gatsby-image';
 import { css } from '@emotion/core';
-import { ctaLink, lowKeyLink } from '../styles/index.js';
+import { lowKeyLink } from '../styles/index.js';
+import CallToAction from '../components/CallToAction/CallToAction.js';
 
 const Project = ({ featured = false, slug, title, client, thumbnail, shortSummary }) => {
 	return (
@@ -41,22 +42,15 @@ const Project = ({ featured = false, slug, title, client, thumbnail, shortSummar
 				/>}
 			</Link>
 			<p><Link to={slug} css={lowKeyLink}>{shortSummary}</Link></p>
-			<Link 
-				to={slug} 
-				css={[
-					ctaLink,
-					css`
-						align-self: flex-end;
+			<span css={css`
+				align-self: flex-end;
 
-						@media(min-width: 768px) {
-							justify-self: flex-end;
-						}
-					`,
-					css`${featured ? `color: #ffffff;` : ``}`
-				]}
-			>
-				Explore Project
-			</Link>
+				@media(min-width: 768px) {
+					justify-self: flex-end;
+				}
+			`}>
+				<CallToAction to={slug} light={featured}>Explore Project</CallToAction>
+			</span>
 		</React.Fragment>
 	);
 };

@@ -7,6 +7,7 @@ import Logo from '../components/Logo.js';
 import Project from '../components/Project.js';
 import { ctaLink, lowKeyLink } from '../styles/index.js';
 import SEO from '../components/seo.js';
+import CallToAction from '../components/CallToAction/CallToAction.js';
 
 const IndexPage = (data) => {
 	const { name, role, description } = data.site.siteMetadata;
@@ -188,8 +189,10 @@ const IndexPage = (data) => {
 				>
 					<h3>About</h3>
 					<p>
-						{excerpt}
-						<Link to="/about" css={[ctaLink, css`color: #ffffff; margin-left: 1em;`]}>Read More</Link>
+						<span css={css`margin-right: .5em;`}>{excerpt}</span>
+						<CallToAction to="/about" light={true}>
+							Read More
+						</CallToAction>
 					</p>
 				</div>
 			</div>

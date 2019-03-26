@@ -3,21 +3,8 @@ import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
 import { css } from '@emotion/core';
 import Layout from '../components/Layout/Layout.js';
-import { ctaLink } from '../styles/index.js';
 import SEO from '../components/seo.js';
-
-const ctaBtn = css`
-	background: #2B2D2D;
-	color: #ffffff;
-	padding: .25em .75em;
-	display: block;
-	text-decoration: none;
-	border-radius: .25em;
-	border: 0;
-	margin: 0;
-`;
-
-const offsiteLink = css`&::after {content: ' \\02197';}`;
+import ExternalCallToAction from '../components/ExternalCallToAction/ExternalCallToAction.js';
 
 const ProjectTemplate = ({ data }) => {
 	const project = data.markdownRemark;
@@ -101,6 +88,7 @@ const ProjectTemplate = ({ data }) => {
 												}
 											`
 										} 
+										key={`thumbnail-${i}`}
 									/>
 								)}
 							</div>
@@ -119,8 +107,8 @@ const ProjectTemplate = ({ data }) => {
 									}
 								`}
 							>
-								{repository && <a href={repository} target="_blank" rel="noopener noreferrer" css={[ctaLink, ctaBtn, offsiteLink]}>Repo</a>}
-								{demo && <a href={demo} target="_blank" rel="noopener noreferrer" css={[ctaLink, ctaBtn, offsiteLink]}>Demo</a>}
+								{repository && <ExternalCallToAction to={repository}>Repo</ExternalCallToAction>}
+								{demo && <ExternalCallToAction to={demo}>Demo</ExternalCallToAction>}
 							</div>
 						</div>
 						<div>
