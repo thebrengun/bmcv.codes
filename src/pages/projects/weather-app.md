@@ -26,4 +26,5 @@ highlights:
     }
 technologies: ['React', 'Redux', 'Express', 'Github Pages', 'Google App Engine', 'Google Maps API', 'Open Weather API']
 featured: true
+order: 3
 ---

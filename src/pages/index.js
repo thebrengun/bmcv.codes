@@ -221,6 +221,7 @@ const indexQuery = graphql`
 				}
 			}
 			limit: 3
+			sort: {fields: [frontmatter___featured, frontmatter___shortSummary], order: DESC}
 		) {
 			edges {
 				node {

@@ -57,7 +57,7 @@ const ProjectsPage = (data) => {
 
 const projectsQuery = graphql`
 	query ProjectsQuery {
-		projects: allMarkdownRemark(filter: {frontmatter: {template: {eq: "project"}}}, sort: {fields: frontmatter___featured, order: DESC}) {
+		projects: allMarkdownRemark(filter: {frontmatter: {template: {eq: "project"}}}, sort: {fields: [frontmatter___featured, frontmatter___shortSummary], order: DESC}) {
 			edges {
 				node {
 					id

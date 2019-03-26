@@ -30,4 +30,5 @@ highlights:
 technologies: ['React', 'Redux', 'webpack', 'Sass', 
 'Gatsby', 'Netlify', 'Netlify CMS', 'Github']
 featured: true
+order: 1
 ---

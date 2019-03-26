@@ -27,4 +27,5 @@ highlights:
     }
 technologies: ['CSS', 'Google Apps Script', 'React', 'Redux', 'webpack']
 featured: true
+order: 2
 ---
