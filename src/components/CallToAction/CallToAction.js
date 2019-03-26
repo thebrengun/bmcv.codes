@@ -16,7 +16,7 @@ export const ctaLink = css`
 class CallToAction extends PureComponent {
 	render() {
 		const { children, to, light } = this.props;
-		const lightCss = css`${light ? `color: #ffffff;` : ``}`;
+		const lightCss = css`${light ? `color: #ffffff; border-color: #ffffff;` : ``}`;
 
 		return (
 			<Link 
