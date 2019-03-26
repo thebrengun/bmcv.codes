@@ -1,6 +1,5 @@
 import React from 'react';
-import { graphql, Link, StaticQuery } from 'gatsby';
-import Img from 'gatsby-image';
+import { graphql, StaticQuery } from 'gatsby';
 import Layout from '../components/Layout/Layout.js';
 import ProjectWrapper from '../components/ProjectWrapper.js';
 import Project from '../components/Project.js';

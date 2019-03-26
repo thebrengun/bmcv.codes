@@ -8,7 +8,7 @@ import ExternalCallToAction from '../components/ExternalCallToAction/ExternalCal
 
 const ProjectTemplate = ({ data }) => {
 	const project = data.markdownRemark;
-	const { title, client, summary, shortSummary, demo, repository, thumbnail, highlights, technologies, thumbnails } = project.frontmatter;
+	const { title, client, summary, shortSummary, demo, repository, thumbnails, highlights, technologies } = project.frontmatter;
 	return (
 		<Layout>
 			<SEO 

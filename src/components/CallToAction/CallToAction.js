@@ -29,6 +29,7 @@ class CallToAction extends PureComponent {
 				{children}
 				<img 
 					src={light ? rightArrowWhite : rightArrowBlack} 
+					alt=""
 					css={css`
 						width: 1em;
 						height: 1em;

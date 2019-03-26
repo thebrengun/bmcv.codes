@@ -1,5 +1,5 @@
 import React from 'react';
-import { graphql, Link, StaticQuery } from 'gatsby';
+import { Link } from 'gatsby';
 import Img from 'gatsby-image';
 import { css } from '@emotion/core';
 import { lowKeyLink } from '../styles/index.js';

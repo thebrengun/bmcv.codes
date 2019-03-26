@@ -1,12 +1,9 @@
 import React from 'react';
-import { graphql, Link, StaticQuery } from 'gatsby';
-import Img from 'gatsby-image';
+import { graphql, StaticQuery } from 'gatsby';
 import { css } from '@emotion/core';
 import Layout from '../components/Layout/Layout.js';
 import Logo from '../components/Logo.js';
 import Project from '../components/Project.js';
-import { ctaLink, lowKeyLink } from '../styles/index.js';
-import SEO from '../components/seo.js';
 import CallToAction from '../components/CallToAction/CallToAction.js';
 
 const IndexPage = (data) => {

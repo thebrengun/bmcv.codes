@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import { css } from '@emotion/core';
 import { ctaLink } from '../CallToAction/CallToAction.js';
 import externalIconWhite from '../../images/icons/new-window-white-36px.png';
@@ -24,6 +24,7 @@ const ExternalCallToAction = ({ to, children }) => (
 				height: 1em;
 				margin-left: .25em;
 			`} 
+			alt=""
 		/>
 	</a>
 );
