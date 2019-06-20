@@ -8,7 +8,7 @@ repository: 'https://github.com/mobilizehere/mobilizehere.com'
 demo: 'https://mobilizehere.com'
 thumbnails: [
     '../../images/projects/mobilize-podcast/mobilize-thumbnail.png',
-    '../../images/projects/mobilize-podcast/mobilize-thumbnail.png'
+    '../../images/projects/mobilize-podcast/mobilize-mobile-menu-crop.png'
 ]
 highlights: 
     - {
