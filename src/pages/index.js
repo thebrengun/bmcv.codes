@@ -249,5 +249,6 @@ const indexQuery = graphql`
 		}
 	}
 `
+const StaticIndexPage = () => <StaticQuery query={indexQuery} render={IndexPage} />
 
-export default () => <StaticQuery query={indexQuery} render={IndexPage} />
+export default StaticIndexPage

@@ -86,4 +86,6 @@ const projectsQuery = graphql`
 	}
 `;
 
-export default () => <StaticQuery query={projectsQuery} render={ProjectsPage} />
+const StaticProjectsPage = () => <StaticQuery query={projectsQuery} render={ProjectsPage} />
+
+export default StaticProjectsPage
