@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import Img from 'gatsby-image';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import { lowKeyLink } from '../styles/index.js';
 import CallToAction from '../components/CallToAction/CallToAction.js';
 

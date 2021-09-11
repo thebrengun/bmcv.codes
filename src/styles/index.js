@@ -1,4 +1,4 @@
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 
 const lowKeyLink = css`
 	text-decoration: inherit;

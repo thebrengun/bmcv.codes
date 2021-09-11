@@ -1,9 +1,9 @@
 import React from 'react';
 import Layout from '../components/Layout/Layout.js';
 import { graphql } from 'gatsby';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import Img from 'gatsby-image';
-import SEO from '../components/seo.js';
+import SEOInfo from '../components/seo.js';
 
 const AboutTemplate = ({ data }) => {
 	const page = data.markdownRemark;
@@ -13,7 +13,7 @@ const AboutTemplate = ({ data }) => {
 
 	return (
 		<Layout>
-			<SEO title={title} />
+			<SEOInfo title={title} />
 			<div css={theme => css`
 				padding: 0 ${theme.measurements.padding} ${theme.measurements.padding} ${theme.measurements.padding};
 				text-align: center;

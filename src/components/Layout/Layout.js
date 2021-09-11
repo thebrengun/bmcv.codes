@@ -3,10 +3,10 @@ import './Layout.css';
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby'
-import { ThemeProvider } from 'emotion-theming';
-import { css } from '@emotion/core';
+import { ThemeProvider } from '@emotion/react';
+import { css } from '@emotion/react';
 import Nav from '../Nav.js';
-import SEO from '../seo.js';
+import SEOInfo from '../seo.js';
 import theme from '../../styles/theme.js';
 
 class Layout extends PureComponent {
@@ -27,7 +27,7 @@ class Layout extends PureComponent {
 				`}
 				render={data => (
 					<ThemeProvider theme={theme}>
-						<SEO />
+						<SEOInfo />
 						<Nav />
 						<main css={css`padding-top: 3em;`}>
 							{children}

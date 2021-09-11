@@ -1,7 +1,7 @@
 import React from 'react';
 import Layout from '../components/Layout/Layout.js';
 import { graphql } from 'gatsby';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 
 const DefaultTemplate = ({ data }) => {
 	const page = data.markdownRemark;

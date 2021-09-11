@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import Layout from '../components/Layout/Layout.js';
-import SEO from '../components/seo.js';
+import SEOInfo from '../components/seo.js';
 import styled from '@emotion/styled';
-import { jsx, css } from '@emotion/core';
+import { jsx, css } from '@emotion/react';
 import { navigate } from 'gatsby-link';
 
 const validation = css`
@@ -136,7 +136,7 @@ const ContactPage = () => {
 
 	return (
 		<Layout>
-			<SEO title={`Contact`} />
+			<SEOInfo title={`Contact`} />
 			<div
 				css={css`
 					@media(min-width: 768px) {

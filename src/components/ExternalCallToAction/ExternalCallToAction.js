@@ -1,5 +1,5 @@
 import React from 'react';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import { ctaLink } from '../CallToAction/CallToAction.js';
 import externalIconWhite from '../../images/icons/new-window-white-36px.png';
 

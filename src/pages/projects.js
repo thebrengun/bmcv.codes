@@ -3,15 +3,15 @@ import { graphql, StaticQuery } from 'gatsby';
 import Layout from '../components/Layout/Layout.js';
 import ProjectWrapper from '../components/ProjectWrapper.js';
 import Project from '../components/Project.js';
-import SEO from '../components/seo.js';
-import { css } from '@emotion/core';
+import SEOInfo from '../components/seo.js';
+import { css } from '@emotion/react';
 
 const ProjectsPage = (data) => {
 	const projects = data.projects.edges;
 
 	return (
 		<Layout>
-			<SEO title={`Projects`} />
+			<SEOInfo title={`Projects`} />
 			<div 
 				css={css`
 					@media(min-width: 768px) {
@@ -86,4 +86,6 @@ const projectsQuery = graphql`
 	}
 `;
 
-export default () => <StaticQuery query={projectsQuery} render={ProjectsPage} />
+const StaticProjectsPage = () => <StaticQuery query={projectsQuery} render={ProjectsPage} />
+
+export default StaticProjectsPage
