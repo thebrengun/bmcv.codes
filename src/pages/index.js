@@ -1,6 +1,6 @@
 import React from 'react';
 import { graphql, StaticQuery } from 'gatsby';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import Layout from '../components/Layout/Layout.js';
 import Logo from '../components/Logo.js';
 import Project from '../components/Project.js';

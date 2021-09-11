@@ -4,7 +4,7 @@ import Layout from '../components/Layout/Layout.js';
 import ProjectWrapper from '../components/ProjectWrapper.js';
 import Project from '../components/Project.js';
 import SEOInfo from '../components/seo.js';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 
 const ProjectsPage = (data) => {
 	const projects = data.projects.edges;

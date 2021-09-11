@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { Link } from 'gatsby';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import logo from '../images/bmcv-icon.png';
 
 class Nav extends PureComponent {

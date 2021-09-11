@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { Link } from 'gatsby';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import rightArrowWhite from '../../images/icons/right-arrow-white-36px.png';
 import rightArrowBlack from '../../images/icons/right-arrow-black-36px.png';
 

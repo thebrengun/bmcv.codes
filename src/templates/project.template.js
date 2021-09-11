@@ -1,7 +1,7 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import Layout from '../components/Layout/Layout.js';
 import SEOInfo from '../components/seo.js';
 import ExternalCallToAction from '../components/ExternalCallToAction/ExternalCallToAction.js';

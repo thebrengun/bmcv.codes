@@ -1,5 +1,5 @@
 import React from 'react';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 
 const featuredSnippet = (theme, featured) => `${featured ? `
 	background: ${theme.colors.primary};
