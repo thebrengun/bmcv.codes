@@ -3,7 +3,7 @@ import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
 import { css } from '@emotion/core';
 import Layout from '../components/Layout/Layout.js';
-import SEO from '../components/seo.js';
+import SEOInfo from '../components/seo.js';
 import ExternalCallToAction from '../components/ExternalCallToAction/ExternalCallToAction.js';
 
 const ProjectTemplate = ({ data }) => {
@@ -11,7 +11,7 @@ const ProjectTemplate = ({ data }) => {
 	const { title, client, summary, shortSummary, demo, repository, thumbnails, highlights, technologies } = project.frontmatter;
 	return (
 		<Layout>
-			<SEO 
+			<SEOInfo 
 				title={`Project: ${title}${client && ` - ${client}`}`} 
 				description={summary || shortSummary}
 			/>

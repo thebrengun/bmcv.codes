@@ -3,7 +3,7 @@ import { graphql, StaticQuery } from 'gatsby';
 import Layout from '../components/Layout/Layout.js';
 import ProjectWrapper from '../components/ProjectWrapper.js';
 import Project from '../components/Project.js';
-import SEO from '../components/seo.js';
+import SEOInfo from '../components/seo.js';
 import { css } from '@emotion/core';
 
 const ProjectsPage = (data) => {
@@ -11,7 +11,7 @@ const ProjectsPage = (data) => {
 
 	return (
 		<Layout>
-			<SEO title={`Projects`} />
+			<SEOInfo title={`Projects`} />
 			<div 
 				css={css`
 					@media(min-width: 768px) {

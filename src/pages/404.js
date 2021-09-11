@@ -1,12 +1,12 @@
 import React from 'react';
 import Layout from '../components/Layout/Layout.js';
-import SEO from '../components/seo.js';
+import SEOInfo from '../components/seo.js';
 import { css } from '@emotion/core';
 import { Link } from 'gatsby';
 
 const NotFoundPage = () => (
 	<Layout>
-		<SEO title={`Not Found`} />
+		<SEOInfo title={`Not Found`} />
 		<div css={theme => css`
 			padding: 0 ${theme.measurements.padding} ${theme.measurements.padding} ${theme.measurements.padding};
 
